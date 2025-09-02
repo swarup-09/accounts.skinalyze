@@ -1,0 +1,6 @@
+import{a as d}from"./appwrite-BakUkQmp.js";const e=document.getElementById("resetBtn"),n=document.getElementById("status");e.addEventListener("click",async()=>{const s=new URLSearchParams(window.location.search),r=s.get("userId"),o=s.get("secret"),a=document.getElementById("password").value.trim(),c=document.getElementById("confirmPassword").value.trim();if(!r||!o){t("❌ Invalid reset link.","red");return}if(!a||a.length<6){t("⚠️ Password must be at least 6 characters.","yellow");return}if(a!==c){t("❌ Passwords do not match.","red");return}e.disabled=!0,e.innerHTML=`
+    <svg class="animate-spin h-5 w-5 mr-2 inline text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+    </svg> Resetting...
+  `;try{await d.updateRecovery(r,o,a,c),t("✅ Password has been reset successfully!","green"),e.innerHTML="Password Reset ✅",e.classList.add("cursor-not-allowed")}catch(i){t("❌ Reset failed: "+(i.message||i),"red"),e.innerHTML="Reset Password",e.disabled=!1}});function t(s,r){n.innerText=s,n.className=`mt-6 font-semibold text-${r}-600 transition-opacity duration-500 opacity-0`,setTimeout(()=>{n.classList.add("opacity-100")},50)}
