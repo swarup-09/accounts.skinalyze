@@ -5,4 +5,12 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [tailwindcss()],
   base:'/accounts.skinalyze/',
+  build: {
+    rollupOptions: {
+      input: {
+        main: "index.html",              
+        forgot: "forgot-password.html",
+      },
+    },
+  },
 });
