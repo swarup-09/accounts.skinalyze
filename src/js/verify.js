@@ -1,5 +1,6 @@
 import { account } from "./lib/appwrite.js";
 
+
 const verifyBtn = document.getElementById("verifyBtn");
 const statusEl = document.getElementById("status");
 
